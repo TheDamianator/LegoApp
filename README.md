@@ -1,8 +1,7 @@
-# React + Vite
+# Lego collection keeper
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project came from my love of LEGO and my desire to keep track of my collection. I have a lot of LEGO sets and I wanted a way to easily keep track of what I have and what I'm missing. I also wanted to learn more about React, Vite, and MUI, so I decided to create this project.
 
-Currently, two official plugins are available:
+I used React to create the user interface and Vite to build and serve the application. I also used MUI to style the application and make it look nice. I chose these tools because I wanted to learn more about them and because they are all great tools for building web applications.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+I hope you find this project useful and enjoy using it! Let me know if you have any questions or if you'd like to contribute to the project.
