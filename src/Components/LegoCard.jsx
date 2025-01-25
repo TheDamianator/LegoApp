@@ -1,22 +1,24 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
+import { Button, Card, CardActions, CardContent, CardMedia, Typography, Grid } from "@mui/material";
 
-function LegoCard({ legoset, index, legosets, setLegosets }) {
-  const handleRemove = () => setLegosets(legosets.filter((_, i) => i !== index));
+function LegoCard({ legoset, legosets, setLegosets }) {
+  const handleRemove = () => {
+    setLegosets(legosets.filter((set) => set.id !== legoset.id));
+  };
 
   return (
-    <Card>
+    <Card key={legoset.name}>
       <CardMedia component="img" height="140" image={legoset.image} alt={legoset.name} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {legoset.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          €{legoset.price.toFixed(2)}
+          €{legoset.price}
         </Typography>
       </CardContent>
       <CardActions>
         <Button size="small">Edit</Button>
-        <Button onClick={handleRemove} color="error" size="small">
+        <Button color="error" size="small" onClick={handleRemove}>
           Remove
         </Button>
       </CardActions>

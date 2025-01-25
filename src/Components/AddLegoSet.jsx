@@ -1,61 +1,65 @@
 import React, { useState } from "react";
-import { Button, Dialog, DialogTitle, DialogContent, DialogActions, TextField } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from "@mui/material";
 
 function AddLegoSet({ setLegosets }) {
   const [open, setOpen] = useState(false);
-  const [newLegoSet, setNewLegoSet] = useState({
-    name: "",
-    price: 0,
-    image: "",
-  });
-
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [image, setImage] = useState("");
 
   const handleAdd = () => {
-    setLegosets((prevLegosets) => [...prevLegosets, newLegoSet]);
-    setNewLegoSet({
-      name: "",
-      price: 0,
-      image: "",
-    });
+    setLegosets((prevLegosets) => [
+      ...prevLegosets,
+      {
+        id: Date.now(),
+        name,
+        price: parseFloat(price),
+        image,
+      },
+    ]);
     handleClose();
   };
 
+  const handleClickOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <>
-      <Button onClick={handleOpen} variant="contained">
+      <Button onClick={handleClickOpen} variant="contained" style={{ marginBottom: "16px" }}>
         + Add LEGO Set
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Add LEGO Set</DialogTitle>
         <DialogContent>
           <TextField
+            autoFocus
+            margin="dense"
             label="Name"
-            value={newLegoSet.name}
-            onChange={(e) => setNewLegoSet({ ...newLegoSet, name: e.target.value })}
             fullWidth
-            margin="normal"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
           <TextField
+            margin="dense"
             label="Price"
-            type="number"
-            value={newLegoSet.price}
-            onChange={(e) => setNewLegoSet({ ...newLegoSet, price: Number(e.target.value) })}
             fullWidth
-            margin="normal"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            type="number"
           />
           <TextField
+            margin="dense"
             label="Image URL"
-            value={newLegoSet.image}
-            onChange={(e) => setNewLegoSet({ ...newLegoSet, image: e.target.value })}
             fullWidth
-            margin="normal"
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleAdd} variant="contained" color="primary">
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleAdd} color="primary">
             Add
           </Button>
         </DialogActions>

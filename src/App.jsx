@@ -14,7 +14,6 @@ function App() {
         {legosets.map((legoset) => (
           <Grid item key={legoset.id} xs={12} sm={6} md={4}>
             <LegoCard
-              mt={2}
               legoset={legoset}
               index={legosets.findIndex((set) => set.id === legoset.id)}
               legosets={legosets}
